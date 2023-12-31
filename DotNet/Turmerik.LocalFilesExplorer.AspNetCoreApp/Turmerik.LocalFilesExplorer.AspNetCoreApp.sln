@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Turmerik.LocalFilesExplorer.AspNetCoreApp", "Turmerik.LocalFilesExplorer.AspNetCoreApp.csproj", "{3C57FAAB-FD1B-430A-9FDB-F4E1AC996F71}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3C57FAAB-FD1B-430A-9FDB-F4E1AC996F71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C57FAAB-FD1B-430A-9FDB-F4E1AC996F71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C57FAAB-FD1B-430A-9FDB-F4E1AC996F71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C57FAAB-FD1B-430A-9FDB-F4E1AC996F71}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D2588867-E651-4051-A5D3-02468DC4967E}
+	EndGlobalSection
+EndGlobal
