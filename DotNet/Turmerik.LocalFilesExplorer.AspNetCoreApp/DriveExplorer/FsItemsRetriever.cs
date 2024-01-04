@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Turmerik.LocalFilesExplorer.AspNetCoreApp.Helpers;
-using Turmerik.LocalFileNotes.AspNetCoreApp.Controllers;
-using Turmerik.LocalFilesExplorer.AspNetCoreApp.Utility;
+﻿using Turmerik.LocalFilesExplorer.AspNetCoreApp.Utility;
 
 namespace Turmerik.LocalFilesExplorer.AspNetCoreApp.DriveExplorer
 {
@@ -51,7 +42,7 @@ namespace Turmerik.LocalFilesExplorer.AspNetCoreApp.DriveExplorer
 
         public FsItemsRetriever(ITimeStampHelper timeStampHelper) : base(timeStampHelper)
         {
-            this.rootDirPath = string.Empty;
+            rootDirPath = string.Empty;
         }
 
         public bool AllowSysFolders { get; init; }
@@ -249,14 +240,14 @@ namespace Turmerik.LocalFilesExplorer.AspNetCoreApp.DriveExplorer
             {
                 if (hasRootDirPath)
                 {
-                    throw new InvalidOperationException(
-                        $"All paths are required to fall under root path {rootDirPath}");
+                    throw new DriveExplorerException(
+                        $"All paths are required to fall under root path `{rootDirPath}`");
                 }
                 else
                 {
-                    throw new InvalidOperationException(
-                        string.Join(" ", $"All paths are required to either have a different root than the system root or fall under user profile path {userProfilePath}",
-                            $"as a nested folder that does not start with the dot char '.' and is not equal to the app data dir name {appDataDirName}"));
+                    throw new DriveExplorerException(
+                        string.Join(" ", $"All paths are required to either have a different root than the system root or fall under user profile path `{userProfilePath}`",
+                            $"as a nested folder that does not start with the dot char '.' and is not equal to the app data dir name `{appDataDirName}`"));
                 }
             }
 
@@ -272,7 +263,7 @@ namespace Turmerik.LocalFilesExplorer.AspNetCoreApp.DriveExplorer
                     PathH.InvalidPathCharsStr) && !path.EndsWith(":");
 
             bool isValid = canBeValid;
-            
+
             if (isValid)
             {
                 isValid = !hasRootDirPath;
@@ -293,8 +284,8 @@ namespace Turmerik.LocalFilesExplorer.AspNetCoreApp.DriveExplorer
                         userProfilePath, path, false,
                         out string? restOfPath);
 
-                    isValid = isValid && restOfPath.First() != '.' && (
-                        restOfPath != appDataDirName) && !restOfPath.StartsWith(
+                    isValid = isValid && restOfPath.First() != '.' &&
+                        restOfPath != appDataDirName && !restOfPath.StartsWith(
                             appDataChildRelPathStartStr);
                 }
             }

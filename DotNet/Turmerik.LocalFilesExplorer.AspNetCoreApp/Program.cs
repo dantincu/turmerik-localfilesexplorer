@@ -1,8 +1,6 @@
 using Microsoft.AspNetCore.Authentication.Negotiate;
 using System.Text.Json.Serialization;
-using Turmerik.LocalFileNotes.AspNetCoreApp.Controllers;
 using Turmerik.LocalFilesExplorer.AspNetCoreApp.Dependencies;
-using Turmerik.LocalFilesExplorer.AspNetCoreApp.Settings;
 
 var myAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
@@ -31,7 +29,6 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddControllers(options =>
 {
-    options.Filters.Add<ClientVersionAndUserUuidFilter>();
 }).AddJsonOptions(options => {
     options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
 });
