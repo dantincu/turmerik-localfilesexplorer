@@ -23,12 +23,6 @@ namespace Turmerik.LocalFilesExplorer.AspNetCoreApp.Utility
             return retVal;
         }
 
-        public static char[] GetContained(this string str, params char[] chars)
-        {
-            char[] retChars = str.GetContained((IEnumerable<char>)chars);
-            return retChars;
-        }
-
         public static char[] GetContained(this string str, IEnumerable<char> chars)
         {
             char[] retChars = chars.Where(c => str.Contains(c)).ToArray();
@@ -42,36 +36,6 @@ namespace Turmerik.LocalFilesExplorer.AspNetCoreApp.Utility
                 chr >= 'A' && chr <= 'Z';
 
             return isLtnTtr;
-        }
-
-        public static bool ContainsOnly(this string input, bool allowWhitespace, char chr)
-        {
-            bool retVal = input.All(c => c == chr || allowWhitespace && char.IsWhiteSpace(c));
-            return retVal;
-        }
-
-        public static bool ContainsOnly(this string input, bool allowWhitespace, params char[] charsArr)
-        {
-            bool retVal = input.All(c => allowWhitespace && char.IsWhiteSpace(c) || charsArr.Contains(c));
-            return retVal;
-        }
-
-        public static bool AllWhiteSpacesAre(this string input, Func<char, bool> predicate)
-        {
-            bool retVal = input.All(c => !char.IsWhiteSpace(c) || predicate(c));
-            return retVal;
-        }
-
-        public static bool AllWhiteSpacesAre(this string input, params char[] allowedWhiteSpaces)
-        {
-            bool retVal = input.All(c => !char.IsWhiteSpace(c) || allowedWhiteSpaces.Contains(c));
-            return retVal;
-        }
-
-        public static bool AllWhiteSpacesAre(this string input, char allowedWhiteSpace = ' ')
-        {
-            bool retVal = input.All(c => !char.IsWhiteSpace(c) || allowedWhiteSpace == c);
-            return retVal;
         }
 
         public static string ToStr(this char[] charsArr, int startIndex = -1, int length = -1)
@@ -88,26 +52,6 @@ namespace Turmerik.LocalFilesExplorer.AspNetCoreApp.Utility
             }
 
             return retStr;
-        }
-
-        public static Tuple<string, ReadOnlyCollection<char>> ToRdnlStr(this char[] charsArr, int startIndex = -1, int length = -1)
-        {
-            Tuple<string, ReadOnlyCollection<char>> retTuple;
-
-            if (startIndex >= 0 && length >= 0)
-            {
-                retTuple = Tuple.Create(
-                    new string(charsArr, startIndex, length),
-                    charsArr.Skip(startIndex).Take(length).RdnlC());
-            }
-            else
-            {
-                retTuple = Tuple.Create(
-                    new string(charsArr),
-                    charsArr.RdnlC());
-            }
-
-            return retTuple;
         }
     }
 }

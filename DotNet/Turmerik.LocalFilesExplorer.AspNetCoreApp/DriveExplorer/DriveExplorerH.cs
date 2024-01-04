@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Turmerik.LocalFilesExplorer.AspNetCoreApp.Helpers;
-using Turmerik.LocalFilesExplorer.AspNetCoreApp.Utility;
+﻿using Turmerik.LocalFilesExplorer.AspNetCoreApp.Utility;
 
 namespace Turmerik.LocalFilesExplorer.AspNetCoreApp.DriveExplorer
 {

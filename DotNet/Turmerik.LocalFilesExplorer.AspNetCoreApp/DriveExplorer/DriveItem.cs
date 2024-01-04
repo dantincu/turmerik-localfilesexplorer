@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Turmerik.LocalFilesExplorer.AspNetCoreApp.Helpers;
-
-namespace Turmerik.LocalFilesExplorer.AspNetCoreApp.DriveExplorer
+﻿namespace Turmerik.LocalFilesExplorer.AspNetCoreApp.DriveExplorer
 {
     public enum OfficeFileType
     {

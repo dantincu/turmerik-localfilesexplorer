@@ -73,66 +73,6 @@
             return subStr;
         }
 
-        public static bool StartsWithStr(
-            this string inputStr,
-            int startIdx,
-            string searchedStr)
-        {
-            int strLen = searchedStr.Length;
-            int endIdx = strLen + startIdx;
-            bool startsWith = endIdx < inputStr.Length;
-
-            if (startsWith)
-            {
-                for (int i = 0; i < strLen; i++)
-                {
-                    int idx = startIdx + i;
-                    startsWith = inputStr[idx] == searchedStr[i];
-
-                    if (!startsWith)
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        i++;
-                    }
-                }
-            }
-
-            return startsWith;
-        }
-
-        public static bool EndsWithStr(
-            this string inputStr,
-            int endIdx,
-            string searchedStr)
-        {
-            int strLen = searchedStr.Length;
-            int startIdx = endIdx - strLen;
-            bool startsWith = startIdx > 0;
-
-            if (startsWith)
-            {
-                for (int i = 0; i < strLen; i++)
-                {
-                    int idx = startIdx + i;
-                    startsWith = inputStr[idx] == searchedStr[i];
-
-                    if (!startsWith)
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        i++;
-                    }
-                }
-            }
-
-            return startsWith;
-        }
-
         public static bool Matches(
             this string inputStr,
             int startIdx,
@@ -171,16 +111,5 @@
 
             return matches;
         }
-
-        public static bool Matches(
-            this string inputStr,
-            int startIdx,
-            out int relIdx,
-            string str) => Matches(
-                inputStr,
-                startIdx,
-                out relIdx,
-                (chr, idx) => idx < str.Length && chr == str[idx],
-                (chr, idx) => idx + 1 == str.Length);
     }
 }

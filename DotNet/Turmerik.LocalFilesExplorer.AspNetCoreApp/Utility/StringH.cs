@@ -9,61 +9,6 @@ namespace Turmerik.LocalFilesExplorer.AspNetCoreApp.Utility
 {
     public static partial class StringH
     {
-        public const string UPPER_LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        public const string LOWER_LETTERS = "abcdefghijklmnopqrstuvwxyz";
-        public const string DIGITS = "0123456789";
-        public const string PARENS = "{[()]}";
-        public const string CODE_OPERATORS = "./%+-*|&<>=:?";
-        public const string CODE_IDNF_ALLOWED_NON_ALPHANUMERICS = "@$_";
-        public const string OTHER_PUNCTUATION_CHARS = "`,;'\"";
-
-        public const string NL_CHAR = "\n\r";
-
-        public static readonly string NL = Environment.NewLine;
-
-        public static bool IsNewLineChar(char c)
-        {
-            bool retVal = NL_CHAR.Contains(c);
-            return retVal;
-        }
-
-        public static StringComparison GetStringComparison(bool ignoreCase)
-        {
-            StringComparison stringComparison;
-
-            if (ignoreCase)
-            {
-                stringComparison = StringComparison.InvariantCultureIgnoreCase;
-            }
-            else
-            {
-                stringComparison = StringComparison.InvariantCulture;
-            }
-
-            return stringComparison;
-        }
-
-        public static string NwLns(int count)
-        {
-            string retStr = string.Concat(
-                Enumerable.Range(0, count).Select(
-                    i => NL).ToArray());
-
-            return retStr;
-        }
-
-        public static int IndexOfStr(
-            this string input,
-            string str,
-            bool ignoreCase = false,
-            int startIndex = 0)
-        {
-            var stringComparison = GetStringComparison(ignoreCase);
-            int idx = input.IndexOf(str, startIndex, stringComparison);
-
-            return idx;
-        }
-
         public static string JoinStrRange(
             int rangeCount,
             Func<int, string> strFactory,
@@ -147,15 +92,5 @@ namespace Turmerik.LocalFilesExplorer.AspNetCoreApp.Utility
 
             return retStr;
         }
-
-        public static string JoinStr(
-            this string[] strArr,
-            string joinStr = null) => string.Join(
-                joinStr ?? string.Empty,
-                strArr);
-
-        public static string[] GetTextLines(
-            string text) => text.Split('\n').Select(
-                line => line.TrimEnd('\r')).ToArray();
     }
 }
